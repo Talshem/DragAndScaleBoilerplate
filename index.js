@@ -78,14 +78,7 @@ function makeResizableDiv(element) {
     
     function resize(e) {
   
-// console.log(e.pageX)
-// console.log(playgroundRect.right)
-// if(element.offsetLeft < playgroundRect.left){
-// element.style.left = playgroundRect.left + "px";
-// }
-
       if (currentResizer.classList.contains('bottom-right')) {
-  
         const width = original_width + (e.pageX - original_mouse_x);
         const height = original_height + (e.pageY - original_mouse_y)
         if (width > minimum_size && e.pageX < playgroundRect.right) {
@@ -117,13 +110,39 @@ function makeResizableDiv(element) {
           element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
         }
       }
-      else {
+      else if (currentResizer.classList.contains('top-left')) {
         const width = original_width - (e.pageX - original_mouse_x)
         const height = original_height - (e.pageY - original_mouse_y)
         if (width > minimum_size && e.pageX > playgroundRect.left) {
           element.style.width = width + 'px'
           element.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
         }
+        if (height > minimum_size && e.pageY > playgroundRect.top) {
+          element.style.height = height + 'px'
+          element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'
+        }
+      }
+     else if (currentResizer.classList.contains('right')) {
+        const width = original_width + (e.pageX - original_mouse_x);
+        if (width > minimum_size && e.pageX < playgroundRect.right) {
+          element.style.width = width + 'px'
+        }
+      }
+      else if (currentResizer.classList.contains('bottom')) {
+        const height = original_height + (e.pageY - original_mouse_y)
+        if (height > minimum_size && e.pageY < playgroundRect.bottom) {
+          element.style.height = height + 'px'
+        }
+      }
+        else if (currentResizer.classList.contains('left')) {
+        const width = original_width - (e.pageX - original_mouse_x)
+        if (width > minimum_size && e.pageX > playgroundRect.left) {
+          element.style.width = width + 'px'
+          element.style.left = original_x + (e.pageX - original_mouse_x) + 'px'
+        }
+      }
+        else if (currentResizer.classList.contains('top')) {
+        const height = original_height - (e.pageY - original_mouse_y)
         if (height > minimum_size && e.pageY > playgroundRect.top) {
           element.style.height = height + 'px'
           element.style.top = original_y + (e.pageY - original_mouse_y) + 'px'

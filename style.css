@@ -36,31 +36,29 @@
 }
 
 /*Add your code below*/
-.resizers{
-  width: 100%;
-  height: 100%;
-  border: 5px solid #000000;
-}
 
-.resizers .resizer{
-  width: 10px;
-  height: 10px;
+
+.resizers .resizer.dot{
+  width: 5px;
+  height: 5px;
   z-index: 10;
   background: pink;
   position: absolute;
 }
+
+.resizers .resizer.line{
+  position: absolute;
+  z-index: 5;
+}
+
 .resizers .resizer.top-left {
-  left: -5px;
-  top: -5px;
   cursor: nwse-resize; /*resizer cursor*/
 }
 .resizers .resizer.top-right {
   right: -5px;
-  top: -5px;
   cursor: nesw-resize;
 }
 .resizers .resizer.bottom-left {
-  left: -5px;
   bottom: -5px;
   cursor: nesw-resize;
 }
@@ -68,4 +66,27 @@
   right: -5px;
   bottom: -5px;
   cursor: nwse-resize;
+}
+
+.resizers .resizer.top {
+  width:100%;
+  border-top: 5px solid #000000;
+  cursor: n-resize;
+}
+.resizers .resizer.right {
+  height:100%;
+  left:100%;
+  border-right: 5px solid #000000;
+  cursor: e-resize;
+}
+.resizers .resizer.left {
+  height:100%;
+  border-left: 5px solid #000000;
+  cursor: w-resize;
+}
+.resizers .resizer.bottom {
+  top:100%;
+  width:100%;
+  border-bottom: 5px solid #000000;
+  cursor: s-resize;
 }
